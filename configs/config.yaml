@@ -13,7 +13,7 @@ chat_template: "qwen3-instruct"
 # -----------------------------------------------------------------------------
 hf_dataset_name: "myfi/parser_dataset_ner_v1.16"
 hf_dataset_split: "train"
-HF_TOKEN_PLACEHOLDER: "HF_TOKEN_PLACEHOLDER"
+#HF_TOKEN_PLACEHOLDER: "HF_TOKEN_PLACEHOLDER"
 
 
 # -----------------------------------------------------------------------------

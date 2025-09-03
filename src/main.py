@@ -52,7 +52,7 @@ logging.info(f"Validation dataset size: {len(validation_dataset)}")
 training_dataset = load_dataset(
     config.get("hf_dataset_name", "myfi/parser_dataset_ner_v1.16"),
     split=config.get("hf_dataset_split", "train"),
-    token=config.get("HF_TOKEN_PLACEHOLDER", "HF_TOKEN_PLACEHOLDER")
+    token=config.get("HF_TOKEN_PLACEHOLDER")
 )
 logging.info(f"Training dataset size: {len(training_dataset)}")
 logging.info(f"Starting DiverseEvol pipeline with {config.get('rounds', 3)} rounds")
