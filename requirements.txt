@@ -1,0 +1,29 @@
+# Core machine learning and NLP libraries
+torch>=1.12.0
+transformers>=4.21.0
+datasets>=2.4.0
+tokenizers>=0.12.0
+
+# Efficient training libraries 9Run Manually)
+#pip install unsloth
+#pip uninstall unsloth -y && pip install --upgrade --no-cache-dir --no-deps git+https://github.com/unslothai/unsloth.git
+
+# Scientific computing
+numpy>=1.21.0
+pandas>=1.4.0
+scikit-learn>=1.1.0
+
+# Configuration and utilities
+PyYAML>=6.0
+tqdm>=4.64.0
+python-dotenv>=1.0.0
+
+# Optional: Accelerated training (uncomment if needed)
+# accelerate>=0.12.0
+
+# Optional: Weights & Biases for experiment tracking (uncomment if needed)
+# wandb>=0.13.0
+
+# Optional: Jupyter for analysis (uncomment if needed)
+# jupyter>=1.0.0
+# ipywidgets>=7.6.0

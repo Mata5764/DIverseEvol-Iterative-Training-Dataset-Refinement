@@ -1,0 +1,81 @@
+# =============================================================================
+# DiverseEvol Active Learning Configuration
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Model Configuration
+# -----------------------------------------------------------------------------
+base_model: "unsloth/Qwen3-4B-Instruct-2507"
+chat_template: "qwen3-instruct"
+
+# -----------------------------------------------------------------------------
+# Dataset Configuration
+# -----------------------------------------------------------------------------
+hf_dataset_name: "myfi/parser_dataset_ner_v1.16"
+hf_dataset_split: "train"
+HF_TOKEN_PLACEHOLDER: "HF_TOKEN_PLACEHOLDER"
+
+
+# -----------------------------------------------------------------------------
+# Active Learning Parameters
+# -----------------------------------------------------------------------------
+init_label_num: 100    # Initial random samples for round 0
+rounds: 10              # Total number of training rounds
+diverse_k: 100         # New samples to select per round (diversity sampling)
+
+# Sampling configuration
+embedding_batch_size: 8    # Batch size for computing embeddings during sampling
+
+# -----------------------------------------------------------------------------
+# Directory Structure
+# -----------------------------------------------------------------------------
+# All paths are relative to project root
+base_dir: "."
+data_dir: "data"
+selected_dir: "data/selected"      # Round-specific selected samples
+entire_dir: "data/entire"          # Cumulative datasets per round
+checkpoints_dir: "models/checkpoints"  # Model checkpoints per round
+logs_dir: "models/logs"            # Pipeline and training logs
+output_dir: "outputs"              # General outputs
+
+# -----------------------------------------------------------------------------
+# Training Configuration
+# -----------------------------------------------------------------------------
+# Model settings
+max_seq_length: 2048
+load_in_4bit: true
+
+# LoRA settings
+lora_r: 8
+lora_alpha: 8
+lora_dropout: 0.1
+
+# Training hyperparameters
+num_train_epochs: 5
+lr: 0.00002
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 2
+warmup_steps: 10
+weight_decay: 0.1
+optim: "adamw_torch"
+lr_scheduler_type: "cosine_with_restarts"
+
+# Logging and evaluation
+logging_steps: 1
+eval_strategy: "steps"
+eval_steps: 5
+report_to: "none"
+
+# Checkpointing
+save_strategy: "steps"
+save_steps: 5
+save_only_model: true
+save_total_limit: 1
+load_best_model_at_end: true
+metric_for_best_model: "eval_loss"
+greater_is_better: false
+
+# -----------------------------------------------------------------------------
+# General Settings
+# -----------------------------------------------------------------------------
+seed: 42
